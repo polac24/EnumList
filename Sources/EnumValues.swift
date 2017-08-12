@@ -14,5 +14,5 @@ public protocol EnumValues{
     
     
     static var allRaws:Set<RawType> {get set}
-    static func all() -> Set<Element>
+    static var all: Set<Element> {get}
 }

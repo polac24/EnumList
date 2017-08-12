@@ -8,22 +8,22 @@
 
 import UIKit
 
-public extension EnumValues where Element.RawValue == EnumListRawRepresentable<Self>, RawType == String{
-    static func all() -> Set<Element> {
-        _ = Element(rawValue: EnumListRawRepresentable<Self> ())
+public extension EnumValues where Element.RawValue == EnumListRaw<Self>, RawType == String{
+    static var all: Set<Element> {
+        _ = Element(rawValue: EnumListRaw<Self> ())
         
-        let a =  allRaws.map({EnumListRawRepresentable<Self>(stringLiteral: $0)})
+        let a =  allRaws.map({EnumListRaw<Self>(stringLiteral: $0)})
         return Set(a.flatMap({
             return Element(rawValue: $0)
         }))
     }
 }
 
-public extension EnumValues where Element.RawValue == EnumListRawRepresentable<Self>, RawType == Int{
-    static func all() -> Set<Element> {
-        _ = Element(rawValue: EnumListRawRepresentable<Self> ())
+public extension EnumValues where Element.RawValue == EnumListRaw<Self>, RawType == Int{
+    static var all: Set<Element> {
+        _ = Element(rawValue: EnumListRaw<Self> ())
         
-        let a =  allRaws.map({EnumListRawRepresentable<Self>(integerLiteral: $0)})
+        let a =  allRaws.map({EnumListRaw<Self>(integerLiteral: $0)})
         return Set(a.flatMap({
             return Element(rawValue: $0)
         }))
