@@ -7,29 +7,34 @@
 //
 
 import UIKit
-
-public extension EnumValues where Element.RawValue == EnumListStringRaw<Self>, RawType == String{
-    static var all: Set<Element> {
-        let a =  allRaws.map({EnumListStringRaw<Self>(stringLiteral: $0)})
-        return Set(a.flatMap({
+private extension EnumValues {
+    static func buildAllElementsSet(conversion:(RawType)->(Element.RawValue)) -> Set<Element>{
+        let arrayRawValues =  allRaws.map(conversion)
+        return Set(arrayRawValues.flatMap({
             return Element(rawValue: $0)
         }))
     }
+    static func resetRaws(imaginationRawValue: Element.RawValue){
+        allRaws = []
+        _ = Element(rawValue: imaginationRawValue)
+    }
+}
+
+public extension EnumValues where Element.RawValue == EnumListStringRaw<Self>, RawType == String{
+    static var all: Set<Element> {
+        return buildAllElementsSet(conversion:{EnumListStringRaw<Self>(stringLiteral: $0)})
+    }
     static func initialize(){
-        self.allRaws = []
-        _ = Element(rawValue: EnumListStringRaw<Self> ())
+        resetRaws(imaginationRawValue: EnumListStringRaw<Self>())
     }
 }
 
 public extension EnumValues where Element.RawValue == EnumListIntRaw<Self>, RawType == Int{
-    static var all: Set<Element> {        
-        let a =  allRaws.map({EnumListIntRaw<Self>(integerLiteral: $0)})
-        return Set(a.flatMap({
-            return Element(rawValue: $0)
-        }))
+    static var all: Set<Element> {
+        return buildAllElementsSet(conversion:EnumListIntRaw<Self>.init)
     }
     static func initialize(){
-        self.allRaws = []
-        _ = Element(rawValue: EnumListIntRaw<Self> ())
+        resetRaws(imaginationRawValue: EnumListIntRaw<Self>())
+
     }
 }
