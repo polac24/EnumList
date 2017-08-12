@@ -1,0 +1,16 @@
+PODS:
+  - EnumList (0.1.0)
+
+DEPENDENCIES:
+  - EnumList (from `../`)
+
+EXTERNAL SOURCES:
+  EnumList:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EnumList: 2bf35b3240710556a758c424169840783022b371
+
+PODFILE CHECKSUM: 9e1ad07e710fc2aedf701136ee858c03993ad200
+
+COCOAPODS: 1.2.1

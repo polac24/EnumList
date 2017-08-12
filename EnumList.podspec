@@ -6,6 +6,8 @@ Pod::Spec.new do |spec|
   spec.authors      = { 'Bartosz Polaczyk' => 'polac24@gmail.com' }
   spec.summary      = 'List all cases from enum'
   spec.source       = { :git => 'https://github.com/polac24/EnumList.git', :tag => 'v0.1.0' }
+  spec.platform = :ios
+  spec.ios.deployment_target = '9.0'
   spec.module_name  = 'EnumList'
 
   spec.source_files       = 'Sources/*.swift'

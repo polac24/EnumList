@@ -1,0 +1,12 @@
+ platform :ios, '9.0'
+
+target 'EnumListProject' do
+  use_frameworks!
+
+  pod 'EnumList', :path => '../'
+
+  target 'EnumListProjectTests' do
+    inherit! :search_paths
+  end
+
+end
