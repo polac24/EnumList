@@ -1,5 +1,12 @@
 PODS:
-  - EnumList (0.1.0)
+  - EnumList (0.1.0):
+    - EnumList/Core (= 0.1.0)
+    - EnumList/Unbox (= 0.1.0)
+  - EnumList/Core (0.1.0):
+    - Unbox (~> 2.5.0)
+  - EnumList/Unbox (0.1.0):
+    - Unbox (~> 2.5.0)
+  - Unbox (2.5.0)
 
 DEPENDENCIES:
   - EnumList (from `../`)
@@ -9,7 +16,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  EnumList: 2bf35b3240710556a758c424169840783022b371
+  EnumList: b3d05669a8a99254a69dbcf9bb644dc3496f822d
+  Unbox: 30e437e6151a6de16139375fd4e8dd9a664cfbf7
 
 PODFILE CHECKSUM: 3df556e0604db7a0e2e9baab321ffa0c43e12966
 

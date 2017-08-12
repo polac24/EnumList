@@ -8,10 +8,10 @@
 
 import UIKit
 
-public struct EnumListRaw<T:EnumValues>: ExpressibleByStringLiteral, ExpressibleByIntegerLiteral, Equatable{
+public struct EnumListStringRaw<T:EnumValues>: ExpressibleByStringLiteral, Equatable{
     let a:T.RawType?
     
-    public static func ==(lhs: EnumListRaw<T>, rhs: EnumListRaw<T>) -> Bool {
+    public static func ==(lhs: EnumListStringRaw<T>, rhs: EnumListStringRaw<T>) -> Bool {
         if let lhsA = lhs.a { T.allRaws.insert(lhsA)}
         if let rhsA = rhs.a { T.allRaws.insert(rhsA)}
         
@@ -26,6 +26,23 @@ public struct EnumListRaw<T:EnumValues>: ExpressibleByStringLiteral, Expressible
     }
     public init(unicodeScalarLiteral value: String){
         a = T.RawType(value)
+    }
+    
+    init(){
+        a = nil
+    }
+}
+
+
+
+public struct EnumListIntRaw<T:EnumValues>: ExpressibleByIntegerLiteral, Equatable{
+    let a:T.RawType?
+    
+    public static func ==(lhs: EnumListIntRaw<T>, rhs: EnumListIntRaw<T>) -> Bool {
+        if let lhsA = lhs.a { T.allRaws.insert(lhsA)}
+        if let rhsA = rhs.a { T.allRaws.insert(rhsA)}
+        
+        return lhs.a == rhs.a
     }
     public init(integerLiteral value: Int){
         a = T.RawType(value)

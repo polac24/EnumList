@@ -10,5 +10,14 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '9.0'
   spec.module_name  = 'EnumList'
 
-  spec.source_files       = 'Sources/*.swift'
+
+  spec.subspec 'Core' do |unbox|
+    unbox.source_files       = 'Sources/*.swift'
+    unbox.dependency 'Unbox', '~> 2.5.0'
+  end
+  
+  spec.subspec 'Unbox' do |unbox|
+    unbox.source_files       = 'Sources/Unbox/*.swift'
+    unbox.dependency 'Unbox', '~> 2.5.0'
+  end
 end

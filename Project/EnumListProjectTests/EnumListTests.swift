@@ -9,9 +9,9 @@
 import XCTest
 import EnumList
 
-class EnumListProjectTests: XCTestCase {
+class EnumListTests: XCTestCase {
     
-    private enum SubjectString: EnumListRaw<SubjectString.Values>, RawRepresentable{
+    private enum SubjectString: EnumListStringRaw<SubjectString.Values>, RawRepresentable{
         struct Values:EnumValues {
             typealias Element = SubjectString
             
@@ -22,7 +22,7 @@ class EnumListProjectTests: XCTestCase {
         case caseNo2 = "case2"
     }
     
-    private enum SubjectInt: EnumListRaw<SubjectInt.Values>, RawRepresentable{
+    private enum SubjectInt: EnumListIntRaw<SubjectInt.Values>, RawRepresentable{
         struct Values:EnumValues {
             typealias Element = SubjectInt
             
@@ -60,7 +60,7 @@ class EnumListProjectTests: XCTestCase {
     }
     
     func testNotCallingAllBeforeAskingForAllRawsReturnsEmptySet(){
-        enum PrivateSubject: EnumListRaw<PrivateSubject.Values>, RawRepresentable{
+        enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
             struct Values:EnumValues {
                 typealias Element = PrivateSubject
                 
@@ -80,7 +80,7 @@ class EnumListProjectTests: XCTestCase {
     }
     
     func testFetchingNonExistingEnumFillsAllRawsSet(){
-        enum PrivateSubject: EnumListRaw<PrivateSubject.Values>, RawRepresentable{
+        enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
             struct Values:EnumValues {
                 typealias Element = PrivateSubject
                 
@@ -92,7 +92,7 @@ class EnumListProjectTests: XCTestCase {
         }
         
         // Arrange
-        let raw:EnumListRaw<PrivateSubject.Values> = "some_none_existing_raw"
+        let raw:EnumListStringRaw<PrivateSubject.Values> = "some_none_existing_raw"
         // Act
         _ = PrivateSubject(rawValue: raw)
         
@@ -102,7 +102,7 @@ class EnumListProjectTests: XCTestCase {
     }
     
     func testComparingDifferentEnumListRawsDoesNotModifyRawsSet(){
-        enum PrivateSubject: EnumListRaw<PrivateSubject.Values>, RawRepresentable{
+        enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
             struct Values:EnumValues {
                 typealias Element = PrivateSubject
                 
@@ -114,7 +114,7 @@ class EnumListProjectTests: XCTestCase {
         }
         
         // Arrange
-        let raw:EnumListRaw<PrivateSubject.Values> = "some_none_existing_raw"
+        let raw:EnumListStringRaw<PrivateSubject.Values> = "some_none_existing_raw"
         // Act
         _ = PrivateSubject.caseNo1.rawValue == raw
         
@@ -124,7 +124,7 @@ class EnumListProjectTests: XCTestCase {
     }
     
     func testAskingForInitializationFillsAllRawsSet(){
-        enum PrivateSubject: EnumListRaw<PrivateSubject.Values>, RawRepresentable{
+        enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
             struct Values:EnumValues {
                 typealias Element = PrivateSubject
                 
@@ -165,6 +165,29 @@ class EnumListProjectTests: XCTestCase {
         XCTAssertEqual(allRaws, Set([1, 200]))
     }
     
+    func testStringInitializationClearsASet(){
+        // Arrange
+        SubjectString.Values.allRaws = ["X"]
+        
+        // Act
+        SubjectString.Values.initialize()
+        
+        // Assert
+        let allRaws = SubjectString.Values.allRaws
+        XCTAssertEqual(allRaws, Set(["case1", "case2"]))
+    }
+    
+    func testIntInitializationClearsASet(){
+        // Arrange
+        SubjectInt.Values.allRaws = [111]
+        
+        // Act
+        SubjectInt.Values.initialize()
+        
+        // Assert
+        let allRaws = SubjectInt.Values.allRaws
+        XCTAssertEqual(allRaws, Set([1,200]))
+    }
    
     
 }
