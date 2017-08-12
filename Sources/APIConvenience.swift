@@ -9,11 +9,13 @@
 import Foundation
 
 
-extension RawRepresentable{
-    init?<T>(rawValue: String) where RawValue == EnumListStringRaw<T>, T:EnumValues{
-        self.init(rawValue: EnumListStringRaw<T>(stringLiteral: rawValue))
+public extension RawRepresentable{
+    init?<T>(raw rawValue: String) where RawValue == EnumListStringRaw<T>, T:EnumValues{
+        self.init(rawValue: RawValue(stringLiteral: rawValue))
     }
-    init?<T>(rawValue: Int) where RawValue == EnumListIntRaw<T>, T:EnumValues{
+}
+public extension RawRepresentable{
+    init?<T>(raw rawValue: Int)  where RawValue == EnumListIntRaw<T>, T:EnumValues{
         self.init(rawValue: EnumListIntRaw<T>(integerLiteral: rawValue))
     }
 }

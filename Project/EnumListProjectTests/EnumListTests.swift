@@ -52,6 +52,48 @@ class EnumListTests: XCTestCase {
         XCTAssertNil(SubjectInt(rawValue: -1))
     }
     
+    func testInitializingFromStringVariableSucceeds(){
+        // Arrange
+        let string = "case1"
+        
+        // Act
+        let subject = SubjectString(raw: string)
+        
+        // Assert
+        XCTAssertEqual(subject, .caseNo1)
+    }
+    func testInitializingFromIntVariableSucceeds(){
+        // Arrange
+        let intValue = 200
+        
+        // Act
+        let subject = SubjectInt.init(raw: intValue)
+        
+        // Assert
+        XCTAssertEqual(subject, .caseNo2)
+    }
+    
+    func testStringRawCreatesFromGraphemeLiteral(){
+        // Arrange
+        let stringRaw = EnumListStringRaw<SubjectString.Values>(extendedGraphemeClusterLiteral: "case1")
+        
+        // Act
+        let subject = SubjectString(rawValue: stringRaw)
+        
+        // Assert
+        XCTAssertEqual(subject, .caseNo1)
+    }
+    func testStringRawCreatesFromUnicodeLiteral(){
+        // Arrange
+        let stringRaw = EnumListStringRaw<SubjectString.Values>(unicodeScalarLiteral: "case1")
+        
+        // Act
+        let subject = SubjectString(rawValue: stringRaw)
+        
+        // Assert
+        XCTAssertEqual(subject, .caseNo1)
+    }
+    
     func testAllStringEnumsExistInAllList(){
         // Arrange
         
