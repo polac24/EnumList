@@ -34,10 +34,16 @@ class EnumListProjectTests: XCTestCase {
     }
     
     
+    let initializationCode:Void = {
+        SubjectInt.Values.initialize()
+        SubjectString.Values.initialize()
+    }()
+    
     func testAllStringEnumsExistInAllList(){
         // Arrange
         
         // Act
+        SubjectString.Values.initialize()
         let allValues = SubjectString.Values.all
         // Assert
         XCTAssertEqual(allValues, Set([.caseNo1, .caseNo2]))
@@ -86,16 +92,38 @@ class EnumListProjectTests: XCTestCase {
         }
         
         // Arrange
-        
+        let raw:EnumListRaw<PrivateSubject.Values> = "some_none_existing_raw"
         // Act
-        _ = PrivateSubject(rawValue: EnumListRaw<PrivateSubject.Values> ())
+        _ = PrivateSubject(rawValue: raw)
         
         // Assert
         let allRaws = PrivateSubject.Values.allRaws
         XCTAssertFalse(allRaws.isEmpty)
     }
     
-    func testAskingForAllEnumsFillsAllRawsSet(){
+    func testComparingDifferentEnumListRawsDoesNotModifyRawsSet(){
+        enum PrivateSubject: EnumListRaw<PrivateSubject.Values>, RawRepresentable{
+            struct Values:EnumValues {
+                typealias Element = PrivateSubject
+                
+                static var allRaws:Set<String> = []
+            }
+            
+            case caseNo1 = "case1"
+            case caseNo2 = "case2"
+        }
+        
+        // Arrange
+        let raw:EnumListRaw<PrivateSubject.Values> = "some_none_existing_raw"
+        // Act
+        _ = PrivateSubject.caseNo1.rawValue == raw
+        
+        // Assert
+        let allRaws = PrivateSubject.Values.allRaws
+        XCTAssertFalse(allRaws.isEmpty)
+    }
+    
+    func testAskingForInitializationFillsAllRawsSet(){
         enum PrivateSubject: EnumListRaw<PrivateSubject.Values>, RawRepresentable{
             struct Values:EnumValues {
                 typealias Element = PrivateSubject
@@ -110,7 +138,7 @@ class EnumListProjectTests: XCTestCase {
         // Arrange
         
         // Act
-        _ = PrivateSubject.Values.all
+        PrivateSubject.Values.initialize()
         
         // Assert
         let allRaws = PrivateSubject.Values.allRaws

@@ -31,7 +31,7 @@ public struct EnumListRaw<T:EnumValues>: ExpressibleByStringLiteral, Expressible
         a = T.RawType(value)
     }
     
-    public init(){
+    init(){
         a = nil
     }
 }
