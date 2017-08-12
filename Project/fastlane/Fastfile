@@ -1,0 +1,33 @@
+fastlane_version "2.35.1"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    cocoapods
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan(scheme: "EnumListProject", output_directory: "output/tests")
+    xcov(scheme: "EnumListProject", workspace: "EnumListProject.xcworkspace", json_report: true, markdown_report: true, output_directory: "output/coverage/xcov", skip_slack: true, include_targets:"EnumList.framework", coveralls_service_name:"travis-ci", coveralls_service_job_id:ENV["TRAVIS_JOB_ID"])
+    #slather(proj: "EnumListProject.xcodeproj", workspace:"EnumListProject.xcworkspace",coveralls:true)
+  end
+
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+

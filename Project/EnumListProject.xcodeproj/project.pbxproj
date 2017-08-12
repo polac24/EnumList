@@ -41,6 +41,8 @@
 		10005CDC1F3F00F200DFB92D /* EnumListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumListTests.swift; sourceTree = "<group>"; };
 		10005CDE1F3F00F200DFB92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1056D5E11F3F17580084D044 /* EnumListUnboxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumListUnboxTests.swift; sourceTree = "<group>"; };
+		1056D5E41F3F23AC0084D044 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1056D5E81F3F413F0084D044 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		14471477568D8E102EA85FC2 /* Pods-EnumListProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnumListProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnumListProject/Pods-EnumListProject.release.xcconfig"; sourceTree = "<group>"; };
 		1D5F875EA599999652412E30 /* Pods-EnumListProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnumListProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnumListProjectTests/Pods-EnumListProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C2076FE89539B210F45DF0E /* Pods-EnumListProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnumListProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EnumListProject/Pods-EnumListProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				10005CC51F3F00F100DFB92D /* Products */,
 				447831527550AE73F78FB92F /* Pods */,
 				F19219A9E69DF42705C59115 /* Frameworks */,
+				1056D5E31F3F23910084D044 /* RepoDocs */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +112,15 @@
 				1056D5E11F3F17580084D044 /* EnumListUnboxTests.swift */,
 			);
 			path = EnumListProjectTests;
+			sourceTree = "<group>";
+		};
+		1056D5E31F3F23910084D044 /* RepoDocs */ = {
+			isa = PBXGroup;
+			children = (
+				1056D5E41F3F23AC0084D044 /* README.md */,
+				1056D5E81F3F413F0084D044 /* .travis.yml */,
+			);
+			name = RepoDocs;
 			sourceTree = "<group>";
 		};
 		447831527550AE73F78FB92F /* Pods */ = {
