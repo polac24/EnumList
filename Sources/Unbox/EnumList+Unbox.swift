@@ -11,20 +11,22 @@ import Unbox
 
 
 
-public extension UnboxableEnum where RawValue:ExpressibleByStringLiteral, RawValue.StringLiteralType == String{
+public extension UnboxableEnum where RawValue:ExpressibleByStringLiteral{
     static func unbox(value: Any, allowInvalidCollectionElements: Bool) throws -> Self? {
-        guard let v = value as? String else {return nil}
+        guard let literal = value as? RawValue.StringLiteralType else {
+            return nil
+        }
         
-        let a:RawValue = RawValue(stringLiteral: v)
-        return self.init(rawValue:a)
+        return self.init(rawValue: RawValue(stringLiteral: literal))
     }
 }
 
-public extension UnboxableEnum where RawValue:ExpressibleByIntegerLiteral, RawValue.IntegerLiteralType == Int{
+public extension UnboxableEnum where RawValue:ExpressibleByIntegerLiteral{
     static func unbox(value: Any, allowInvalidCollectionElements: Bool) throws -> Self? {
-        guard let v = value as? Int else {return nil}
+        guard let literal = value as? RawValue.IntegerLiteralType else {
+            return nil
+        }
         
-        let a:RawValue = RawValue(integerLiteral: v)
-        return self.init(rawValue:a)
+        return self.init(rawValue: RawValue(integerLiteral: literal))
     }
 }
