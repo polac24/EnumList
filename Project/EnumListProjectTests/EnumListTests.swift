@@ -39,6 +39,19 @@ class EnumListTests: XCTestCase {
         SubjectString.Values.initialize()
     }()
     
+    func testInitializingFromStringSucceeds(){
+        XCTAssertEqual(SubjectString(rawValue: "case1"), .caseNo1)
+    }
+    func testInitializingFromUnknownStringReturnsNil(){
+        XCTAssertNil(SubjectString(rawValue: "!NON_EXISTING!"))
+    }
+    func testInitializingFromIntSucceeds(){
+        XCTAssertEqual(SubjectInt(rawValue: 200), .caseNo2)
+    }
+    func testInitializingFromUnknownIntReturnsNil(){
+        XCTAssertNil(SubjectInt(rawValue: -1))
+    }
+    
     func testAllStringEnumsExistInAllList(){
         // Arrange
         
