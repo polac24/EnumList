@@ -1,7 +1,7 @@
 # EnumList
 
-[![Build Status](https://travis-ci.org/polac24/EnumList.svg?branch=master)](https://travis-ci.org/polac24/EnumList)
-[![Coverage Status](https://coveralls.io/repos/github/polac24/EnumList/badge.svg)](https://coveralls.io/github/polac24/EnumList)
+[![Build Status](https://travis-ci.org/polac24/EnumList.png?branch=master)](https://travis-ci.org/polac24/EnumList)
+[![Coverage Status](https://coveralls.io/repos/github/polac24/EnumList/badge.png)](https://coveralls.io/github/polac24/EnumList)
 
 Library to enumerate all enum cases that have String or Int `RawValue`s. EnumList is a first library to obtain list of enum cases  which does not relay on memory introspection. Because of that it is safe by design and stable in future Swift releases.  
 
