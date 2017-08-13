@@ -73,6 +73,13 @@ class EnumListTests: XCTestCase {
         XCTAssertEqual(subject, .caseNo2)
     }
     
+    func testInitializingWithCustomInitFromLiteralStringSucceeds(){
+        XCTAssertEqual(SubjectString(raw: "case1"), .caseNo1)
+    }
+    func testInitializingWithCustomInitFromLiteralIntSucceeds(){
+        XCTAssertEqual(SubjectInt(raw: 200), .caseNo2)
+    }
+    
     func testStringRawCreatesFromGraphemeLiteral(){
         // Arrange
         let stringRaw = EnumListStringRaw<SubjectString.Values>(extendedGraphemeClusterLiteral: "case1")
@@ -243,6 +250,28 @@ class EnumListTests: XCTestCase {
         let allRaws = SubjectInt.Values.allRaws
         XCTAssertEqual(allRaws, Set([1,200]))
     }
-   
+    
+    func testStringableSetReturnedIsCreatedFromScratch(){
+        // Arrange
+        SubjectString.Values.allRaws = ["X"]
+        
+        // Act
+        
+        // Assert
+        let allRaws = SubjectString.Values.all
+        XCTAssertEqual(allRaws, Set([.caseNo1, .caseNo2]))
+    }
+    
+    func testInterableSetReturnedIsCreatedFromScratch(){
+        // Arrange
+        SubjectInt.Values.allRaws = [111]
+        
+        // Act
+        
+        // Assert
+        let allRaws = SubjectInt.Values.all
+        XCTAssertEqual(allRaws, Set([.caseNo1, .caseNo2]))
+    }
+    
     
 }
