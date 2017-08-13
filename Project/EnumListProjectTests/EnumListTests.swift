@@ -22,6 +22,17 @@ class EnumListTests: XCTestCase {
         case caseNo2 = "case2"
     }
     
+    private enum SubjectStringDefaultValue: EnumListStringRaw<SubjectStringDefaultValue.Values>, RawRepresentable{
+        struct Values:EnumValues {
+            typealias Element = SubjectStringDefaultValue
+            
+            static var allRaws:Set<String> = []
+        }
+        
+        case caseNo1
+        case caseNo2 = "case2"
+    }
+    
     private enum SubjectInt: EnumListIntRaw<SubjectInt.Values>, RawRepresentable{
         struct Values:EnumValues {
             typealias Element = SubjectInt
@@ -33,11 +44,6 @@ class EnumListTests: XCTestCase {
         case caseNo2 = 200
     }
     
-    
-    let initializationCode:Void = {
-        SubjectInt.Values.initialize()
-        SubjectString.Values.initialize()
-    }()
     
     func testInitializingFromStringSucceeds(){
         XCTAssertEqual(SubjectString(rawValue: "case1"), .caseNo1)
@@ -273,5 +279,15 @@ class EnumListTests: XCTestCase {
         XCTAssertEqual(allRaws, Set([.caseNo1, .caseNo2]))
     }
     
+    
+    func testAllValuesForEnumWithDefaultStringVariableAreValid(){
+        XCTAssertEqual(SubjectStringDefaultValue.Values.all, [.caseNo1, .caseNo2])
+    }
+    func testAllRawValuesForEnumWithDefaultStringVariableAreValid(){
+        // Arrange
+        SubjectStringDefaultValue.Values.initialize();
+        // Act
+        XCTAssertEqual(SubjectStringDefaultValue.Values.allRaws, ["caseNo1", "case2"])
+    }
     
 }

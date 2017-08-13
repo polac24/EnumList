@@ -108,6 +108,26 @@ let myCase = YourIntEnum(rawValue: 1) // .caseNo1
 
 ```
 
+### Enums with "Default" RawValue
+
+Same as with standard `enum`, you don't need to specify all rawValues manually. Compiler will fill it for you, with the same `String` raw values, as a name of a case. You can mix cases with custom/automatic `rawValue`:
+
+```swift
+private enum YourEnumName: EnumListStringRaw<YourEnumName.Values>, RawRepresentable{
+  struct Values:EnumValues {
+    typealias Element = YourEnumName
+    static var allRaws:Set<String> = []
+  }
+  case caseNo1 // is equivalent to case caseNo1 = "caseNo1"
+  case caseNo2 = "case2"
+}
+
+YourEnumName.Values.all //  Set([.caseNo1, .caseNo2]) 
+YourEnumName.Values.allRaws //  Set(["caseNo1", "case2"])
+
+```
+
+
 ### All Raw Values
 
 To can grab all raw values (which are a `Set<String>` or `Set<Int>`, depending of your `enum` deifinition), but keep in mind that you have to either call `YourEnumName.Values.initialize()` or `YourEnumName.Values.all` before that, just to fill `YourEnumName.Values.allRaws` with valid values.
