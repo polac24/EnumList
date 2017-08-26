@@ -5,7 +5,7 @@ xcode_scheme: EnumListProject
 
 branches:
   only:
-    - ci_test
+    - swift4
     - master
 
 
