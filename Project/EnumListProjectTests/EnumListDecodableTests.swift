@@ -12,7 +12,7 @@ import EnumList
 
 
 private enum SubjectString: EnumListStringRaw<SubjectString.Values>, RawRepresentable{
-    struct Values:EnumValues {
+    struct Values:StringEnumValues {
         typealias Element = SubjectString
         
         static var allRaws:Set<String> = []
@@ -23,7 +23,7 @@ private enum SubjectString: EnumListStringRaw<SubjectString.Values>, RawRepresen
 }
 
 private enum SubjectInt: EnumListIntRaw<SubjectInt.Values>, RawRepresentable{
-    struct Values:EnumValues {
+    struct Values:IntEnumValues {
         typealias Element = SubjectInt
         
         static var allRaws:Set<Int> = []
@@ -38,7 +38,7 @@ extension SubjectString:Decodable{}
 extension SubjectInt:Decodable{}
 
 
-class EnumListCodableTests: XCTestCase {
+class EnumListDecodableTests: XCTestCase {
     struct Subjects:Decodable, Equatable {
         static func ==(lhs: Subjects, rhs: Subjects) -> Bool {
             return lhs.subjectString == rhs.subjectString && lhs.subjectInt == rhs.subjectInt
@@ -168,7 +168,5 @@ class EnumListCodableTests: XCTestCase {
         default: XCTFail("Expecting typeMismatch error")
         }
     }
-    
-    
     
 }
