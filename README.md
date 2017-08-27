@@ -16,9 +16,9 @@ EnumList does not relay non memory introspection so it is safe by design and bec
 
 ## Swift versions
 
-This branch works officially with Swift 3.1, but code is comaptible with Swift 4.0.
+This branch works officially with Swift 4.
 
-If you want to use Swift 4.0 with `Codable` support, please check [`swift4` branch](https://github.com/polac24/EnumList/tree/swift4).
+If you want to use Swift 3 please check [`swift3` branch](https://github.com/polac24/EnumList/tree/swift3) and cocoapods version v0.1.x.
 
 ## Installation
 
@@ -150,6 +150,22 @@ private enum YourEnumName: EnumListStringRaw<YourEnumName.Values>, RawRepresenta
   }
   case caseNo1 = "case1"
   //case caseNo2 = "case1" - compile error: RawValues have to be unique
+}
+```
+
+### Swift 4 compatibility
+
+`EnumList` is compatible with Swift4 out-of-the box.
+
+In addition, it supports `Codable` protocol as seamlessly as "normal" enums --- just add conformance to `Codable` (or separatelly `Encodable` and/or `Decodable`):
+```swift
+private enum YourEnumName: EnumListStringRaw<YourEnumName.Values>, RawRepresentable, Codable{
+  struct Values:StringEnumValues {
+    typealias Element = YourEnumName
+    static var allRaws:Set<String> = []
+  }
+  case caseNo1 = "case1"
+  case caseNo2 = "case2"
 }
 ```
 
