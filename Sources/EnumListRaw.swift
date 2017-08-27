@@ -10,11 +10,13 @@ import Foundation
 
 public protocol EnumListStringRawable{
     init(stringLiteral value: String)
+    var value:String? {get}
 }
 
-public struct EnumListStringRaw<T:EnumValues>: EnumListStringRawable, ExpressibleByStringLiteral, Equatable{
-    let a:T.RawType?
-    
+public struct EnumListStringRaw<T:StringEnumValues>: EnumListStringRawable, ExpressibleByStringLiteral, Equatable{
+    public var value: String?{
+        return a
+    }
     
     let a:String?
     
@@ -43,10 +45,13 @@ public struct EnumListStringRaw<T:EnumValues>: EnumListStringRawable, Expressibl
 
 public protocol EnumListIntRawable{
     init(integerLiteral value: Int)
+    var value:Int? {get}
 }
 
-public struct EnumListIntRaw<T:EnumValues>: EnumListIntRawable, ExpressibleByIntegerLiteral, Equatable{
-    let a:T.RawType?
+public struct EnumListIntRaw<T:IntEnumValues>: EnumListIntRawable, ExpressibleByIntegerLiteral, Equatable {
+    public var value: Int?{
+        return a
+    }
     
     let a:Int?
     
