@@ -8,8 +8,12 @@
 
 import Foundation
 
+public protocol EnumListStringRawable{
+    init(stringLiteral value: String)
+}
 
-public struct EnumListStringRaw<T:StringEnumValues>: ExpressibleByStringLiteral, Equatable{
+public struct EnumListStringRaw<T:EnumValues>: EnumListStringRawable, ExpressibleByStringLiteral, Equatable{
+    let a:T.RawType?
     
     
     let a:String?
@@ -37,7 +41,12 @@ public struct EnumListStringRaw<T:StringEnumValues>: ExpressibleByStringLiteral,
 }
 
 
-public struct EnumListIntRaw<T:IntEnumValues>: ExpressibleByIntegerLiteral, Equatable {
+public protocol EnumListIntRawable{
+    init(integerLiteral value: Int)
+}
+
+public struct EnumListIntRaw<T:EnumValues>: EnumListIntRawable, ExpressibleByIntegerLiteral, Equatable{
+    let a:T.RawType?
     
     let a:Int?
     

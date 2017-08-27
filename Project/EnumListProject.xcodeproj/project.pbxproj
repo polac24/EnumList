@@ -14,6 +14,7 @@
 		10005CD21F3F00F200DFB92D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10005CD01F3F00F200DFB92D /* LaunchScreen.storyboard */; };
 		10005CDD1F3F00F200DFB92D /* EnumListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10005CDC1F3F00F200DFB92D /* EnumListTests.swift */; };
 		1056D5E21F3F17580084D044 /* EnumListUnboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056D5E11F3F17580084D044 /* EnumListUnboxTests.swift */; };
+		107498861F52E3D0004C5619 /* EnumListCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107498851F52E3D0004C5619 /* EnumListCodableTests.swift */; };
 		564544D0824CB27F51A92F0B /* Pods_EnumListProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFBB7BF08ECA23D7692638A9 /* Pods_EnumListProject.framework */; };
 		7298351F563726AE0CE1B271 /* Pods_EnumListProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031C7AF19439B07D965E34B5 /* Pods_EnumListProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		1056D5E11F3F17580084D044 /* EnumListUnboxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumListUnboxTests.swift; sourceTree = "<group>"; };
 		1056D5E41F3F23AC0084D044 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1056D5E81F3F413F0084D044 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
+		107498851F52E3D0004C5619 /* EnumListCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumListCodableTests.swift; sourceTree = "<group>"; };
 		14471477568D8E102EA85FC2 /* Pods-EnumListProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnumListProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnumListProject/Pods-EnumListProject.release.xcconfig"; sourceTree = "<group>"; };
 		1D5F875EA599999652412E30 /* Pods-EnumListProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnumListProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnumListProjectTests/Pods-EnumListProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C2076FE89539B210F45DF0E /* Pods-EnumListProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnumListProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EnumListProject/Pods-EnumListProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				10005CDC1F3F00F200DFB92D /* EnumListTests.swift */,
 				10005CDE1F3F00F200DFB92D /* Info.plist */,
 				1056D5E11F3F17580084D044 /* EnumListUnboxTests.swift */,
+				107498851F52E3D0004C5619 /* EnumListCodableTests.swift */,
 			);
 			path = EnumListProjectTests;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10005CDD1F3F00F200DFB92D /* EnumListTests.swift in Sources */,
+				107498861F52E3D0004C5619 /* EnumListCodableTests.swift in Sources */,
 				1056D5E21F3F17580084D044 /* EnumListUnboxTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
