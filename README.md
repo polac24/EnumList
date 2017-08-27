@@ -14,6 +14,12 @@ Library to enumerate all enum cases (for `Swift` or `Int` `RawValue`).
 EnumList does not relay non memory introspection so it is safe by design and becomes stable in the future Swift releases.
 
 
+## Swift versions
+
+This branch works officially with Swift 3.1, but code is comptely comaptible with Swift 4.0.
+
+If you want to use Swift 4.0 with `Codable` support, please check [`swift4` branch](https://github.com/polac24/EnumList/tree/swift4).
+
 ## Installation
 
 ### CocoaPods
