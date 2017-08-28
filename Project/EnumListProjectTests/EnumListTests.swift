@@ -12,7 +12,7 @@ import EnumList
 class EnumListTests: XCTestCase {
     
     private enum SubjectString: EnumListStringRaw<SubjectString.Values>, RawRepresentable{
-        struct Values:EnumValues {
+        struct Values:StringEnumValues {
             typealias Element = SubjectString
             
             static var allRaws:Set<String> = []
@@ -23,7 +23,7 @@ class EnumListTests: XCTestCase {
     }
     
     private enum SubjectStringDefaultValue: EnumListStringRaw<SubjectStringDefaultValue.Values>, RawRepresentable{
-        struct Values:EnumValues {
+        struct Values:StringEnumValues {
             typealias Element = SubjectStringDefaultValue
             
             static var allRaws:Set<String> = []
@@ -34,7 +34,7 @@ class EnumListTests: XCTestCase {
     }
     
     private enum SubjectInt: EnumListIntRaw<SubjectInt.Values>, RawRepresentable{
-        struct Values:EnumValues {
+        struct Values:IntEnumValues {
             typealias Element = SubjectInt
             
             static var allRaws:Set<Int> = []
@@ -129,7 +129,7 @@ class EnumListTests: XCTestCase {
     
     func testNotCallingAllBeforeAskingForAllRawsReturnsEmptySet(){
         enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
-            struct Values:EnumValues {
+            struct Values:StringEnumValues {
                 typealias Element = PrivateSubject
                 
                 static var allRaws:Set<String> = []
@@ -149,7 +149,7 @@ class EnumListTests: XCTestCase {
     
     func testFetchingNonExistingEnumFillsAllRawsSet(){
         enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
-            struct Values:EnumValues {
+            struct Values:StringEnumValues {
                 typealias Element = PrivateSubject
                 
                 static var allRaws:Set<String> = []
@@ -171,7 +171,7 @@ class EnumListTests: XCTestCase {
     
     func testComparingDifferentEnumListRawsDoesNotModifyRawsSet(){
         enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
-            struct Values:EnumValues {
+            struct Values:StringEnumValues {
                 typealias Element = PrivateSubject
                 
                 static var allRaws:Set<String> = []
@@ -193,7 +193,7 @@ class EnumListTests: XCTestCase {
     
     func testAskingForInitializationFillsAllRawsSet(){
         enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
-            struct Values:EnumValues {
+            struct Values:StringEnumValues {
                 typealias Element = PrivateSubject
                 
                 static var allRaws:Set<String> = []

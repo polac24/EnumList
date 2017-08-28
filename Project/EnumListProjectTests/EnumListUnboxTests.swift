@@ -13,7 +13,7 @@ import Unbox
 class EnumListUnboxTests: XCTestCase {
     
     private enum SubjectString: EnumListStringRaw<SubjectString.Values>, RawRepresentable, UnboxableEnum{
-        struct Values:EnumValues {
+        struct Values:StringEnumValues {
             typealias Element = SubjectString
             
             static var allRaws:Set<String> = []
@@ -24,7 +24,7 @@ class EnumListUnboxTests: XCTestCase {
     }
     
     private enum SubjectInt: EnumListIntRaw<SubjectInt.Values>, RawRepresentable, UnboxableEnum{
-        struct Values:EnumValues {
+        struct Values:IntEnumValues {
             typealias Element = SubjectInt
             
             static var allRaws:Set<Int> = []

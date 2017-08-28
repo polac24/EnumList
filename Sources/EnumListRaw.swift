@@ -6,10 +6,13 @@
 //
 //
 
-import UIKit
+import Foundation
 
-public struct EnumListStringRaw<T:EnumValues>: ExpressibleByStringLiteral, Equatable{
-    let a:T.RawType?
+
+public struct EnumListStringRaw<T:StringEnumValues>: ExpressibleByStringLiteral, Equatable{
+    
+    
+    let a:String?
     
     public static func ==(lhs: EnumListStringRaw<T>, rhs: EnumListStringRaw<T>) -> Bool {
         if let lhsA = lhs.a { T.allRaws.insert(lhsA)}
@@ -19,13 +22,13 @@ public struct EnumListStringRaw<T:EnumValues>: ExpressibleByStringLiteral, Equat
     }
     
     public init(stringLiteral value: String){
-        a = T.RawType(value)
+        a = value
     }
     public init(extendedGraphemeClusterLiteral value: String){
-        a = T.RawType(value)
+        a = value
     }
     public init(unicodeScalarLiteral value: String){
-        a = T.RawType(value)
+        a = value
     }
     
     init(){
@@ -34,9 +37,9 @@ public struct EnumListStringRaw<T:EnumValues>: ExpressibleByStringLiteral, Equat
 }
 
 
-
-public struct EnumListIntRaw<T:EnumValues>: ExpressibleByIntegerLiteral, Equatable{
-    let a:T.RawType?
+public struct EnumListIntRaw<T:IntEnumValues>: ExpressibleByIntegerLiteral, Equatable {
+    
+    let a:Int?
     
     public static func ==(lhs: EnumListIntRaw<T>, rhs: EnumListIntRaw<T>) -> Bool {
         if let lhsA = lhs.a { T.allRaws.insert(lhsA)}
@@ -45,7 +48,7 @@ public struct EnumListIntRaw<T:EnumValues>: ExpressibleByIntegerLiteral, Equatab
         return lhs.a == rhs.a
     }
     public init(integerLiteral value: Int){
-        a = T.RawType(value)
+        a = value
     }
     
     init(){
