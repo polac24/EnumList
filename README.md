@@ -98,7 +98,7 @@ let myOtherCase = YourEnumName(raw: "case1") // myOtherCase = .caseNo1
 `EnumList` works the same when dealing with `Int` rawValues:
 
 ```swift
-private enum YourIntEnum: EnumListStringRaw<YourIntEnum.Values>, RawRepresentable{
+private enum YourIntEnum: EnumListIntRaw<YourIntEnum.Values>, RawRepresentable{
    struct Values:IntEnumValues {
       typealias Element = YourIntEnum
       static var allRaws:Set<Int> = []
