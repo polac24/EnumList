@@ -198,6 +198,12 @@ Use `fastlane` to build a project: [fastlane Readme](Project/fastlane/)
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/polac24/EnumList/tags). 
 
+## How does it work?
+
+`EnumList` relies on a fact that that if we try to initialise an enum using `init(rawValue:)`, Swift takes all values of its `RawRepresentable` (that have corresponding `case`) one by one and compare it with your `rawValue`, until finds equal value. Therefore, if we try to initialise with some `rawValue` that does not match any case, `EnumList` will have a chance to gather all rawValues with corresponding enum inside `==` operator implementation. This library provides generic struct (`String` or `Int` representable) that you define as dedicated `RawRepresentable` type for your enum.
+
+You can find details in the following [document](https://medium.com/@londeix/listing-all-cases-in-an-enum-3b057f2c1432). 
+
 ## Authors
 
 * **Bartosz Polaczyk** - [polac24](https://github.com/polac24)
