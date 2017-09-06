@@ -9,7 +9,7 @@
 [![License][mit-badge]][mit-url]
 
 
-Library to enumerate all enum cases (for `Swift` or `Int` `RawValue`). 
+Library to enumerate all enum cases (for `String` or `Int` `RawValue`). 
 
 EnumList does not relay non memory introspection so it is safe by design and becomes stable in the future Swift releases.
 
