@@ -3,10 +3,6 @@ osx_image: xcode9
 xcode_project: Project/EnumListProject.xcodeworkspace
 xcode_scheme: EnumListProject
 
-branches:
-  only:
-    - swift4
-    - master
 
 
 env:
