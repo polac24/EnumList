@@ -25,6 +25,10 @@ public extension StringEnumValues where Element.RawValue == EnumListStringRaw<Se
         initialize()
         return buildAllElementsSet(conversion:{EnumListStringRaw<Self>(stringLiteral: $0)})
     }
+    static var allRawValues: Set<String> {
+        initialize()
+        return allRaws
+    }
     static func initialize(){
         resetRaws(imaginationRawValue: EnumListStringRaw<Self>())
     }
@@ -34,6 +38,10 @@ public extension IntEnumValues where Element.RawValue == EnumListIntRaw<Self>, R
     static var all: Set<Element> {
         initialize()
         return buildAllElementsSet(conversion:EnumListIntRaw<Self>.init)
+    }
+    static var allRawValues: Set<Int> {
+        initialize()
+        return allRaws
     }
     static func initialize(){
         resetRaws(imaginationRawValue: EnumListIntRaw<Self>())
