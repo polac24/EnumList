@@ -29,7 +29,7 @@ public extension StringEnumValues where Element.RawValue == EnumListStringRaw<Se
         initialize()
         return allRaws
     }
-    static func initialize(){
+    private static func initialize(){
         resetRaws(imaginationRawValue: EnumListStringRaw<Self>())
     }
 }
@@ -43,7 +43,7 @@ public extension IntEnumValues where Element.RawValue == EnumListIntRaw<Self>, R
         initialize()
         return allRaws
     }
-    static func initialize(){
+    private static func initialize(){
         resetRaws(imaginationRawValue: EnumListIntRaw<Self>())
     }
 }
