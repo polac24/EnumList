@@ -136,7 +136,8 @@ YourEnumName.Values.allRaws //  Set(["caseNo1", "case2"])
 
 ### All Raw Values
 
-To can grab all raw values (which are a `Set<String>` or `Set<Int>`, depending of your `enum` deifinition), but keep in mind that you have to either call `YourEnumName.Values.initialize()` or `YourEnumName.Values.all` before that, just to fill `YourEnumName.Values.allRaws` with valid values.
+ `YourEnumName.Values.allRawValues`  for grabing all raw values (which are a `Set<String>` or `Set<Int>`, depending of your `enum` deifinition).
+**Note:**  `YourEnumName.Values.initialize()` or `YourEnumName.Values.all` are not required to call before anymore.
 
 ### Safety
 

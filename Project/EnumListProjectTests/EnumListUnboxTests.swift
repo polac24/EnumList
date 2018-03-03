@@ -42,11 +42,12 @@ class EnumListUnboxTests: XCTestCase {
         let _:SubjectString = try a.unbox(key: "data")
         
         // Act
-        SubjectString.Values.initialize()
         let all = SubjectString.Values.all
-        
+        let allRawValues = SubjectString.Values.allRawValues
+
         // Assert
         XCTAssertEqual(all, [.caseNo1, .caseNo2])
+        XCTAssertEqual(allRawValues, ["case1", "case2"])
     }
     
     func testUnboxingStringFindsEnum() throws {

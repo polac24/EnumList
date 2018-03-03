@@ -111,12 +111,13 @@ class EnumListTests: XCTestCase {
         // Arrange
         
         // Act
-        SubjectString.Values.initialize()
         let allValues = SubjectString.Values.all
+        let allRawValues = SubjectString.Values.allRawValues
         // Assert
         XCTAssertEqual(allValues, Set([.caseNo1, .caseNo2]))
+        XCTAssertEqual(allRawValues, Set(["case1", "case2"]))
     }
-    
+
     func testAllRawStringValuesExistInAllRaws(){
         // Arrange
         
@@ -126,7 +127,7 @@ class EnumListTests: XCTestCase {
         // Assert
         XCTAssertEqual(allRaws, Set(["case1", "case2"]))
     }
-    
+
     func testNotCallingAllBeforeAskingForAllRawsReturnsEmptySet(){
         enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
             struct Values:StringEnumValues {
@@ -146,7 +147,7 @@ class EnumListTests: XCTestCase {
         // Assert
         XCTAssertTrue(allRaws.isEmpty)
     }
-    
+
     func testFetchingNonExistingEnumFillsAllRawsSet(){
         enum PrivateSubject: EnumListStringRaw<PrivateSubject.Values>, RawRepresentable{
             struct Values:StringEnumValues {
@@ -206,7 +207,7 @@ class EnumListTests: XCTestCase {
         // Arrange
         
         // Act
-        PrivateSubject.Values.initialize()
+        _ = PrivateSubject.Values.all
         
         // Assert
         let allRaws = PrivateSubject.Values.allRaws
@@ -219,8 +220,10 @@ class EnumListTests: XCTestCase {
         
         // Act
         let allValues = SubjectInt.Values.all
+        let allRawValues = SubjectInt.Values.allRawValues
         // Assert
         XCTAssertEqual(allValues, Set([.caseNo1, .caseNo2]))
+        XCTAssertEqual(allRawValues, Set([1, 200]))
     }
     
     func testAllRawIntValuesExistInAllRaws(){
@@ -238,7 +241,7 @@ class EnumListTests: XCTestCase {
         SubjectString.Values.allRaws = ["X"]
         
         // Act
-        SubjectString.Values.initialize()
+        _ = SubjectString.Values.all
         
         // Assert
         let allRaws = SubjectString.Values.allRaws
@@ -250,7 +253,7 @@ class EnumListTests: XCTestCase {
         SubjectInt.Values.allRaws = [111]
         
         // Act
-        SubjectInt.Values.initialize()
+        _ = SubjectInt.Values.all
         
         // Assert
         let allRaws = SubjectInt.Values.allRaws
@@ -273,19 +276,21 @@ class EnumListTests: XCTestCase {
         SubjectInt.Values.allRaws = [111]
         
         // Act
-        
-        // Assert
         let allRaws = SubjectInt.Values.all
+        let allRawValues = SubjectInt.Values.allRawValues
+        // Assert
+
         XCTAssertEqual(allRaws, Set([.caseNo1, .caseNo2]))
+        XCTAssertEqual(allRawValues, Set([1, 200]))
     }
-    
-    
+
     func testAllValuesForEnumWithDefaultStringVariableAreValid(){
         XCTAssertEqual(SubjectStringDefaultValue.Values.all, [.caseNo1, .caseNo2])
+        XCTAssertEqual(SubjectStringDefaultValue.Values.allRawValues, ["caseNo1", "case2"])
     }
     func testAllRawValuesForEnumWithDefaultStringVariableAreValid(){
         // Arrange
-        SubjectStringDefaultValue.Values.initialize();
+        _ = SubjectStringDefaultValue.Values.all
         // Act
         XCTAssertEqual(SubjectStringDefaultValue.Values.allRaws, ["caseNo1", "case2"])
     }
